@@ -10,7 +10,7 @@ namespace LoginRegister.Models
 {
     public class DB_Entities: DbContext
     {
-
+        #region srijan
         public DB_Entities() : base("DatabaseMVC5") { }
         public DbSet<User> Users { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -23,6 +23,7 @@ namespace LoginRegister.Models
 
 
         }
+        #endregion
     }
 }
     
