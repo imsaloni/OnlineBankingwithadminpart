@@ -14,32 +14,44 @@ namespace LoginRegister.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         [Required]
-        [StringLength(50, MinimumLength = 3)]
+       
+
+        [DataType(DataType.Text)]
         public string FirstName { get; set; }
         [Required]
-        [StringLength(50, MinimumLength = 3)]
+        
 
+        [DataType(DataType.Text)]
         public string MiddleName { get; set; }
         [Required]
-        [StringLength(50, MinimumLength = 3)]
+
+        [DataType(DataType.Text)]   
         public string LastName { get; set; }
         [Required]
 
+        [DataType(DataType.Text)]
         public string FathersName { get; set; }
-        [Required]
-        [StringLength(50, MinimumLength = 3)]
+        
 
+        [Required]
+        
+        [RegularExpression(@"^([0-9]{10})$",ErrorMessage = "please Enter valid mobile number")]
+        [MaxLength(10)]
+        [MinLength(10)]
         public string MobileNumber { get; set; }
         [Required]
-        [StringLength(50, MinimumLength = 10)]
+       
 
 
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")]
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}",ErrorMessage ="Please Enter valid EmailID")]
         public string Email{ get; set; }
 
         [Required]
 
-        [StringLength(20, MinimumLength = 12)]
+
+        [MaxLength(12)]
+        [MinLength(12)]
+        [RegularExpression("[^0-9]", ErrorMessage = "please Enter Aadhar number")]
         public string AadharNumber { get; set; }
         [Required]
         
@@ -47,18 +59,18 @@ namespace LoginRegister.Models
         public string DateofBirth { get; set; }
         [Required]
 
-        [StringLength(100, MinimumLength = 10)]
+        
         public string Address { get; set; }
         [Required]
         
 
         public string Occupation { get; set; }
         [Required]
-        [StringLength(50, MinimumLength = 1)]
 
+        [RegularExpression("[^0-9]", ErrorMessage = "please Enter Annual income")]
         public string AnnualIncome { get; set; }
         [Required]
-        [StringLength(50, MinimumLength = 1)]
+        [StringLength(50, MinimumLength = 6)]
 
 
         public string Password { get; set; }
