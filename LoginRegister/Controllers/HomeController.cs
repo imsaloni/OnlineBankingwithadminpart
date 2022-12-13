@@ -16,7 +16,7 @@ namespace LoginRegister.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            if (Session["idUser"] != null)
+            if (Session["UserId"] != null)
             {
                 return View();
             }
@@ -24,6 +24,13 @@ namespace LoginRegister.Controllers
             {
                 return RedirectToAction("Login");
             }
+        }
+
+        //Dashboard
+
+        public ActionResult Dashboard()
+        {
+            return View();
         }
 
         //GET: Register
@@ -85,7 +92,7 @@ namespace LoginRegister.Controllers
                     Session["FullName"] = data.FirstOrDefault().FirstName + " " + data.FirstOrDefault().LastName;
                     Session["Email"] = data.FirstOrDefault().Email;
                     Session["UserId"] = data.FirstOrDefault().UserId;
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Dashboard");
                 }
                 else
                 {

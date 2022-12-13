@@ -51,7 +51,7 @@ namespace LoginRegister.Models
 
         [MaxLength(12)]
         [MinLength(12)]
-        [RegularExpression("[^0-9]", ErrorMessage = "please Enter Aadhar number")]
+        //[RegularExpression("[^0-9]", ErrorMessage = "please Enter Aadhar number")]
         public string AadharNumber { get; set; }
         [Required]
         
@@ -67,7 +67,7 @@ namespace LoginRegister.Models
         public string Occupation { get; set; }
         [Required]
 
-        [RegularExpression("[^0-9]", ErrorMessage = "please Enter Annual income")]
+       // [RegularExpression("[^0-9]", ErrorMessage = "please Enter Annual income")]
         public string AnnualIncome { get; set; }
         [Required]
         [StringLength(50, MinimumLength = 6)]
