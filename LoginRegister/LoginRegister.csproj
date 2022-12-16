@@ -144,12 +144,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202212130917348_Created register.cs" />
-    <Compile Include="Migrations\202212130917348_Created register.designer.cs">
-      <DependentUpon>202212130917348_Created register.cs</DependentUpon>
+    <Compile Include="Migrations\202212151942013_accountDetails .cs" />
+    <Compile Include="Migrations\202212151942013_accountDetails .designer.cs">
+      <DependentUpon>202212151942013_accountDetails .cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountDetails.cs" />
     <Compile Include="Models\DB_Entities.cs" />
+    <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -193,6 +195,8 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Home\Logout.cshtml" />
+    <Content Include="Views\Home\Transaction.cshtml" />
+    <Content Include="Views\Home\AccountDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -211,8 +215,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202212130917348_Created register.resx">
-      <DependentUpon>202212130917348_Created register.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202212151942013_accountDetails .resx">
+      <DependentUpon>202212151942013_accountDetails .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

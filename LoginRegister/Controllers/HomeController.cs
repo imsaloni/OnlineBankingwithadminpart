@@ -102,7 +102,18 @@ namespace LoginRegister.Controllers
             }
             return View();
         }
+        //Account Details
 
+        public ActionResult AccountDetails()
+        {
+            return View(_db.AccountDetails.ToList());
+        }
+        //Transaction
+
+        public ActionResult Transaction()
+        {
+            return View(_db.Transactions.ToList());  
+        }
 
         //Logout
         public ActionResult Logout()

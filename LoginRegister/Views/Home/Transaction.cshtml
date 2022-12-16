@@ -1,0 +1,29 @@
+﻿
+@model IEnumerable<LoginRegister.Models.Transaction>
+
+@{
+    ViewBag.Title = "Transaction";
+}
+
+<h2>Transaction</h2>
+<Table>
+    <Tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TransationId)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.payeeAccountNo)
+                    </td>
+                </tr>
+            }
+
+</Table>
+            
+
+            

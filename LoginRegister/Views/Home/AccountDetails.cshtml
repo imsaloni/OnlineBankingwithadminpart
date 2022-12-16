@@ -1,0 +1,51 @@
+﻿@model IEnumerable<LoginRegister.Models.AccountDetails>
+
+@{
+    ViewBag.Title = "AccountDetails";
+}
+
+<h2>AccountDetails</h2>
+
+
+
+<table>
+    <tr>
+        @Html.DisplayNameFor(model => model.AccountNumber)
+    </tr>
+    
+    <tr>
+        @Html.DisplayNameFor(model => model.UserId)
+
+    </tr>
+    
+
+    <tr>
+        @Html.DisplayNameFor(model => model.Balance)
+    </tr>
+    
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountNumber)
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+
+        </tr>
+    }
+</table>
