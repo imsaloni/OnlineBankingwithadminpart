@@ -140,16 +140,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202212151942013_accountDetails .cs" />
-    <Compile Include="Migrations\202212151942013_accountDetails .designer.cs">
-      <DependentUpon>202212151942013_accountDetails .cs</DependentUpon>
+    <Compile Include="Migrations\202212170406305_admin part.cs" />
+    <Compile Include="Migrations\202212170406305_admin part.designer.cs">
+      <DependentUpon>202212170406305_admin part.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountDetails.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\DB_Entities.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\User.cs" />
@@ -197,6 +199,12 @@
     <Content Include="Views\Home\Logout.cshtml" />
     <Content Include="Views\Home\Transaction.cshtml" />
     <Content Include="Views\Home\AccountDetails.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Home\AdminLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -215,8 +223,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202212151942013_accountDetails .resx">
-      <DependentUpon>202212151942013_accountDetails .cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202212170406305_admin part.resx">
+      <DependentUpon>202212170406305_admin part.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

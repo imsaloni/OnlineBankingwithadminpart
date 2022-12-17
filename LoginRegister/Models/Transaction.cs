@@ -14,19 +14,19 @@ namespace LoginRegister.Models
         public string TransationId { get; set; }
 
         //This is for foreign key refrence
-        [Display(Name = "UserId")]
-        public virtual int UserId { get; set; }
+      //  [Display(Name = "UserId")]
+        //public virtual int UserId { get; set; }
 
-        [ForeignKey("UserId")]
-        public virtual User User { get; set; }
+    //    [ForeignKey("UserId")]
+      //  public virtual User User { get; set; }
 
 
         //Account no foregion key
-      //  [Display(Name ="AccountNumber")]
-        //public virtual int AccountNumber { get;set; }
+        [Display(Name ="AccountNumber")]
+        public virtual int AccountNumber { get;set; }
 
-       // [ForeignKey("AccountNumber")]
-       // public virtual AccountNoumber AccountNumber {get; set;}
+       [ForeignKey("AccountNumber")]
+       public virtual AccountDetails AccountDetails {get; set;}
 
         public int payeeAccountNo { get; set; }
 

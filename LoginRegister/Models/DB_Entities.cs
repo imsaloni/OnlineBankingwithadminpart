@@ -28,8 +28,9 @@ namespace LoginRegister.Models
         
 
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<AccountDetails> AccountDetails { get; set; }   
-        
+        public DbSet<AccountDetails> AccountDetails { get; set; }
+        public DbSet<Admin> Admins { get; set; }
+
     }
 }
     

@@ -7,12 +7,14 @@ using System.Web.Mvc;
 using static System.Collections.Specialized.BitVector32;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.Helpers;
 
 namespace LoginRegister.Controllers
 {
     public class HomeController : Controller
     {
         private DB_Entities _db = new DB_Entities();
+       
         // GET: Home
         public ActionResult Index()
         {
@@ -22,7 +24,7 @@ namespace LoginRegister.Controllers
             }
             else
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Index","Admin");
             }
         }
 
@@ -138,6 +140,35 @@ namespace LoginRegister.Controllers
             }
             return byte2String;
         }
+
+        public ActionResult AdminLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdminLogin(int AdminId, string password)
+        {
+            if (ModelState.IsValid)
+            {
+                var f_password = GetMD5(password);
+                var data = _db.Admins.Where(s => s.AdminId.Equals(AdminId) && s.Password.Equals(password)).ToList();
+                if (data.Count() > 0)
+                {
+                    Session["AdminId"] = data.FirstOrDefault().AdminId;
+
+
+                    return RedirectToAction("Index", "Admin");
+                }
+                else
+                {
+                    ViewBag.msg = "Invalid Adminid or Password";
+                }
+            }
+            return View();
+        }
+
 
     }
 }

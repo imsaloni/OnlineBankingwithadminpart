@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class accountDetails : DbMigration
+    public partial class adminpart : DbMigration
     {
         public override void Up()
         {
@@ -40,29 +40,40 @@
                 .PrimaryKey(t => t.UserId);
             
             CreateTable(
+                "dbo.Admin",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        AdminId = c.Int(nullable: false),
+                        Password = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Transaction",
                 c => new
                     {
                         TransationId = c.String(nullable: false, maxLength: 128),
-                        UserId = c.Int(nullable: false),
+                        AccountNumber = c.Int(nullable: false),
                         payeeAccountNo = c.Int(nullable: false),
                         TransationAmount = c.String(nullable: false),
                         TransactionType = c.String(),
                         TransactionDate = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.TransationId)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
+                .ForeignKey("dbo.AccountDetails", t => t.AccountNumber, cascadeDelete: true)
+                .Index(t => t.AccountNumber);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Transaction", "UserId", "dbo.Users");
+            DropForeignKey("dbo.Transaction", "AccountNumber", "dbo.AccountDetails");
             DropForeignKey("dbo.AccountDetails", "UserId", "dbo.Users");
-            DropIndex("dbo.Transaction", new[] { "UserId" });
+            DropIndex("dbo.Transaction", new[] { "AccountNumber" });
             DropIndex("dbo.AccountDetails", new[] { "UserId" });
             DropTable("dbo.Transaction");
+            DropTable("dbo.Admin");
             DropTable("dbo.Users");
             DropTable("dbo.AccountDetails");
         }
