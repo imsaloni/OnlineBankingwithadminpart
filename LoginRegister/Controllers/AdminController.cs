@@ -69,7 +69,7 @@ namespace LoginRegister.Controllers
 
 
             mm.Subject = "Welcome to Online Banking";
-            mm.Body = "Hello" + " " + _user.FirstName + " " + "Thank you for Registeration In OnlineBanking Application." + "This is your Username:" + _user.Email.ToString() + "   and this is your password: " + _user.Password.ToString() + "" + "You can now Login and get the benefit of Online Banking application";
+            mm.Body = "Hello" + " " + _user.FirstName + " " + "Your Account is SuccessFullly Approved" + "This is your Username:" + _user.Email.ToString() + "   and this is your password: " + _user.Password.ToString() + "" + "You can now Login and get the benefit of Online Banking application";
             mm.IsBodyHtml = false;
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
@@ -127,6 +127,59 @@ namespace LoginRegister.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        [HttpGet]
+        public ActionResult DisApprove(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+
+
+        }
+
+        // POST: Admin/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DisApprove([Bind(Include = "UserId,FirstName,MiddleName,UserStatus,LastName,FathersName,MobileNumber,Email,AadharNumber,DateofBirth,Address,Occupation,AnnualIncome,Password")] User _user)
+        {
+            MailMessage mm = new MailMessage("casestudyonlinebanking@gmail.com", _user.Email);
+
+
+
+            mm.Subject = "Welcome to Online Banking";
+            mm.Body = "Hello" + " " + _user.FirstName + " " + "We Regret to inform you that Your Account is Not Approved.To Open Account Please Register again !";
+            mm.IsBodyHtml = false;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+
+
+
+            NetworkCredential nc = new NetworkCredential("casestudyonlinebanking", "ndneepwnmskhnawt");
+            smtp.UseDefaultCredentials = true;
+            smtp.Credentials = nc;
+
+
+
+            smtp.Send(mm);
+
+
+
+            ViewBag.message = "Thank you for Connecting with us!Your password has been sent to your regsitered mail id  ";
+
+
+            return View(_user);
         }
     }
 }

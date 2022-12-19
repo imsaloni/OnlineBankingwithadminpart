@@ -12,13 +12,16 @@ using System.Threading.Tasks;
 using System.Web.Services.Description;
 using System.Data.Entity;
 using System.Net;
+using System.Security.Principal;
 
 namespace LoginRegister.Controllers
 {
     public class HomeController : Controller
     {
         private DB_Entities _db = new DB_Entities();
+
        
+
         // GET: Home
         public ActionResult Index()
         {
@@ -172,20 +175,53 @@ namespace LoginRegister.Controllers
             }
             return View();
         }
+        
 
-        public ActionResult AccountTransactions()
+        /*public ActionResult UserProfile(User us)
+
+
+
         {
+            var UserId = (int)Session["UserId"];
+            var Users = _db.Users.Where(t => t.UserId == UserId).FirstOrDefault();
+            return View(Users);
+        }
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+
+
+            var user = _db.Users.SingleOrDefault(e => e.UserId == id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult Edit(User use)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(User).State = EntityState.Modified;
+                _db.Users.Attach(use);
+                _db.SaveChanges();
+                return RedirectToAction("Index", "UserProfile");
+            }
+
+
+
             return View();
-        }
-       
-        public ActionResult UserProfile()
-        {
-            return View(_db.Users.ToList());
-        }
-        public ActionResult UserProfile()
-        {
-            
-        }
+        }*/
+
 
 
     }
