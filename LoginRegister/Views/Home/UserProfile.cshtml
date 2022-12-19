@@ -1,0 +1,139 @@
+﻿@model IEnumerable<LoginRegister.Models.User>
+
+@{
+    ViewBag.Title = "UserProfile";
+}
+
+<h2>UserProfile</h2>
+
+
+@{
+    ViewBag.Title = "AccountDetails";
+}
+
+<h2>AccountDetails</h2>
+
+
+<table>
+    <tr>
+        @Html.DisplayNameFor(model => model.UserId)
+    </tr>
+    <tr>
+        @Html.DisplayNameFor(model => model.FirstName)
+
+    </tr>
+
+    <tr>
+        @Html.DisplayNameFor(model => model.MiddleName)
+    </tr>
+    <tr>
+        @Html.DisplayNameFor(model => model.LastName)
+    </tr>
+    <tr>
+        @Html.DisplayNameFor(model => model.FathersName)
+    </tr>
+    <tr>
+        @Html.DisplayNameFor(model => model.MobileNumber)
+    </tr>
+    <tr>
+        @Html.DisplayNameFor(model => model.AadharNumber)
+    </tr>
+    <tr>
+        @Html.DisplayNameFor(model => model.Email)
+    </tr>
+
+    <tr>
+        @Html.DisplayNameFor(model => model.Address)
+    </tr>
+    <tr>
+        @Html.DisplayNameFor(model => model.DateofBirth)
+    </tr>
+    <tr>
+        @Html.DisplayNameFor(model => model.Occupation)
+    </tr>
+    <tr>
+        @Html.DisplayNameFor(model => model.AnnualIncome)
+    </tr>
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FathersName)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNumber)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AadharNumber)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateofBirth)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Occupation)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnnualIncome)
+            </td>
+
+        </tr>
+    }
+</table>
+
+

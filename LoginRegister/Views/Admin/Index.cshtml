@@ -18,6 +18,9 @@
             @Html.DisplayNameFor(model => model.MiddleName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.UserStatus)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
@@ -59,6 +62,9 @@
             @Html.DisplayFor(modelItem => item.MiddleName)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.UserStatus)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
         <td>
@@ -89,7 +95,7 @@
             @Html.DisplayFor(modelItem => item.Password)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
+            @Html.ActionLink("Approve", "Approve", new { id=item.UserId }) |
             @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
         </td>

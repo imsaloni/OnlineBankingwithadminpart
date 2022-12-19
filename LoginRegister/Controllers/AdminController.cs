@@ -4,10 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Security.Cryptography;
-using System.Text;
+using System.Net.Mail;
 using System.Web;
-using System.Web.Helpers;
 using System.Web.Mvc;
 using LoginRegister.Models;
 
@@ -38,15 +36,12 @@ namespace LoginRegister.Controllers
             return View(user);
         }
 
-        // GET: Admin/Create
-       
 
-        // POST: Admin/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        
+
+
         // GET: Admin/Edit/5
-        public ActionResult Edit(int? id)
+        [HttpGet]
+        public ActionResult Approve(int? id)
         {
             if (id == null)
             {
@@ -58,6 +53,8 @@ namespace LoginRegister.Controllers
                 return HttpNotFound();
             }
             return View(user);
+
+           
         }
 
         // POST: Admin/Edit/5
@@ -65,15 +62,36 @@ namespace LoginRegister.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserId,FirstName,MiddleName,LastName,FathersName,MobileNumber,Email,AadharNumber,DateofBirth,Address,Occupation,AnnualIncome,Password")] User user)
+        public ActionResult Approve([Bind(Include = "UserId,FirstName,MiddleName,UserStatus,LastName,FathersName,MobileNumber,Email,AadharNumber,DateofBirth,Address,Occupation,AnnualIncome,Password")] User _user)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(user);
+            MailMessage mm = new MailMessage("casestudyonlinebanking@gmail.com", _user.Email);
+
+
+
+            mm.Subject = "Welcome to Online Banking";
+            mm.Body = "Hello" + " " + _user.FirstName + " " + "Thank you for Registeration In OnlineBanking Application." + "This is your Username:" + _user.Email.ToString() + "   and this is your password: " + _user.Password.ToString() + "" + "You can now Login and get the benefit of Online Banking application";
+            mm.IsBodyHtml = false;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+
+
+
+            NetworkCredential nc = new NetworkCredential("casestudyonlinebanking", "ndneepwnmskhnawt");
+            smtp.UseDefaultCredentials = true;
+            smtp.Credentials = nc;
+
+
+
+            smtp.Send(mm);
+
+
+
+            ViewBag.message = "Thank you for Connecting with us!Your password has been sent to your regsitered mail id  ";
+
+
+            return View(_user);
         }
 
         // GET: Admin/Delete/5
@@ -110,11 +128,5 @@ namespace LoginRegister.Controllers
             }
             base.Dispose(disposing);
         }
-
-       
-       
-        
-        
-        
     }
 }

@@ -8,6 +8,10 @@ using static System.Collections.Specialized.BitVector32;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Helpers;
+using System.Threading.Tasks;
+using System.Web.Services.Description;
+using System.Data.Entity;
+using System.Net;
 
 namespace LoginRegister.Controllers
 {
@@ -169,8 +173,27 @@ namespace LoginRegister.Controllers
             return View();
         }
 
+        public ActionResult AccountTransactions()
+        {
+            return View();
+        }
+       
+        public ActionResult UserProfile()
+        {
+            return View(_db.Users.ToList());
+        }
+        public ActionResult UserProfile()
+        {
+            
+        }
+
 
     }
+
+
+
 }
+
+    
 
           

@@ -23,6 +23,8 @@ namespace LoginRegister.Models
 
         [DataType(DataType.Text)]
         public string MiddleName { get; set; }
+        
+        public string UserStatus { get; set; }
         [Required]
 
         [DataType(DataType.Text)]   
