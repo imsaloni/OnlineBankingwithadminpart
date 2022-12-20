@@ -13,6 +13,7 @@ using System.Web.Services.Description;
 using System.Data.Entity;
 using System.Net;
 using System.Security.Principal;
+using System.Net.Mail;
 
 namespace LoginRegister.Controllers
 {
@@ -63,7 +64,7 @@ namespace LoginRegister.Controllers
                     _db.Configuration.ValidateOnSaveEnabled = false;
                     _db.Users.Add(_user);
                     _db.SaveChanges();
-                    return RedirectToAction("Login");
+                    
                 }
                 else
                 {
@@ -73,10 +74,43 @@ namespace LoginRegister.Controllers
 
 
             }
-            return View();
+
+            // email notfication
+            MailMessage mm = new MailMessage("casestudyonlinebanking@gmail.com", _user.Email);
 
 
+
+            mm.Subject = "Welcome to Online Banking";
+            mm.Body = "Hello" + " " + _user.FirstName + " " + "Thank you for Registeration In OnlineBanking Application." + "This is your Username:" + _user.Email.ToString() + "   and this is your password: " + _user.Password.ToString() + "" + "You can now Login and get the benefit of Online Banking application";
+            mm.IsBodyHtml = false;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+
+
+
+            NetworkCredential nc = new NetworkCredential("casestudyonlinebanking", "ndneepwnmskhnawt");
+            smtp.UseDefaultCredentials = true;
+            smtp.Credentials = nc;
+
+
+
+            smtp.Send(mm);
+
+
+
+            ViewBag.message = "Thank you for Connecting with us!Your password has been sent to your regsitered mail id  ";
+
+
+
+
+            return RedirectToAction("Index");
         }
+            
+
+
+        
 
         public ActionResult Login()
         {
@@ -115,7 +149,10 @@ namespace LoginRegister.Controllers
 
         public ActionResult AccountDetails()
         {
-            return View(_db.AccountDetails.ToList());
+            var UserId = (int)Session["UserId"];
+            var Users = _db.Users.Where(t => t.UserId == UserId).FirstOrDefault();
+            return View(Users);
+            
         }
         //Transaction
 
@@ -177,7 +214,7 @@ namespace LoginRegister.Controllers
         }
         
 
-        /*public ActionResult UserProfile(User us)
+        public ActionResult UserProfile(User us)
 
 
 
@@ -220,7 +257,7 @@ namespace LoginRegister.Controllers
 
 
             return View();
-        }*/
+        }
 
 
 

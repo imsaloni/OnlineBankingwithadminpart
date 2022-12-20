@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LoginRegister.Models.AccountDetails>
+﻿@model LoginRegister.Models.AccountDetails
 
 @{
     ViewBag.Title = "AccountDetails";
@@ -6,46 +6,35 @@
 
 <h2>AccountDetails</h2>
 
-
-
-<table>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
     <tr>
-        @Html.DisplayNameFor(model => model.AccountNumber)
+
+        <th>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+
+        <th></th>
     </tr>
-    
+
+
     <tr>
-        @Html.DisplayNameFor(model => model.UserId)
-
+        <td>
+            @Html.DisplayFor(model => model.AccountNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Balance)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.UserId })
+        </td>
     </tr>
-    
-
-    <tr>
-        @Html.DisplayNameFor(model => model.Balance)
-    </tr>
-    
 
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccountNumber)
-            </td>
-
-        </tr>
-
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-
-        </tr>
-
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Balance)
-            </td>
-
-        </tr>
-    }
 </table>

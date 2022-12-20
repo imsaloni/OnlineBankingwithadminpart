@@ -142,7 +142,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -207,7 +206,6 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Home\Logout.cshtml" />
     <Content Include="Views\Home\Transaction.cshtml" />
-    <Content Include="Views\Home\AccountDetails.cshtml" />
     <Content Include="Views\Home\AdminLogin.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
@@ -216,7 +214,9 @@
     <Content Include="Views\Admin\Approve.cshtml" />
     <Content Include="Views\Admin\DisApprove.cshtml" />
     <Content Include="Views\Home\AccountTransaction.cshtml" />
-    <Content Include="Views\UserProfile\UserProfile.cshtml" />
+    <Content Include="Views\Home\UserProfile.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Home\AccountDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,104 @@
+﻿@model LoginRegister.Models.User
+
+
+
+@{
+
+
+
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>UserProfile</h2>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FathersName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AadharNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Occupation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnnualIncome)
+        </th>
+
+
+
+        <th></th>
+    </tr>
+
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.FathersName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.MobileNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.AadharNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.DateofBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Occupation)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.AnnualIncome)
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.UserId })
+        </td>
+    </tr>
+
+
+
+</table>
