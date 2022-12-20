@@ -81,7 +81,7 @@ namespace LoginRegister.Controllers
 
 
             mm.Subject = "Welcome to Online Banking";
-            mm.Body = "Hello" + " " + _user.FirstName + " " + "Thank you for Registeration In OnlineBanking Application." + "This is your Username:" + _user.Email.ToString() + "   and this is your password: " + _user.Password.ToString() + "" + "You can now Login and get the benefit of Online Banking application";
+            mm.Body = "Hello" + " " + _user.FirstName + " " + "Thank you for Registeration In OnlineBanking Application." + "This is your Username:" + _user.Email.ToString() + "   and this is your password: ";
             mm.IsBodyHtml = false;
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
@@ -105,7 +105,7 @@ namespace LoginRegister.Controllers
 
 
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
             
 
@@ -152,14 +152,30 @@ namespace LoginRegister.Controllers
             var UserId = (int)Session["UserId"];
             var Users = _db.Users.Where(t => t.UserId == UserId).FirstOrDefault();
             return View(Users);
-            
+
         }
         //Transaction
-
+        [HttpGet]
         public ActionResult Transaction()
         {
-            return View(_db.Transactions.ToList());  
+            return View();  
         }
+       /* [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Transactions()
+        {
+            var accountDetails = _db.AccountDetails.ToList();
+           
+            var user1 = _db.AccountDetails.ToList();
+            AccountDetails user = _db.AccountDetails.Find();
+            var user2 = _db.AccountDetails.FindAsync();
+            user1.Balance -= Balance;
+            user2.Credit += Balance;
+
+            await db.SaveChangesAsync();
+            return View();
+        }*/
+
 
         //Logout
         public ActionResult Logout()
@@ -192,15 +208,15 @@ namespace LoginRegister.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AdminLogin(int AdminId, string password)
+        public ActionResult AdminLogin(string Email, string Password)
         {
             if (ModelState.IsValid)
             {
-                var f_password = GetMD5(password);
-                var data = _db.Admins.Where(s => s.AdminId.Equals(AdminId) && s.Password.Equals(password)).ToList();
+                var f_password = GetMD5(Password);
+                var data = _db.Admins.Where(s => s.Email.Equals(Email) && s.Password.Equals(Password)).ToList();
                 if (data.Count() > 0)
                 {
-                    Session["AdminId"] = data.FirstOrDefault().AdminId;
+                    Session["Email"] = data.FirstOrDefault().Email;
 
 
                     return RedirectToAction("Index", "Admin");

@@ -17,9 +17,7 @@
         <th>
             @Html.DisplayNameFor(model => model.MiddleName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserStatus)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.LastName)
         </th>
@@ -47,9 +45,7 @@
         <th>
             @Html.DisplayNameFor(model => model.AnnualIncome)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
+       
         <th></th>
     </tr>
 
@@ -61,9 +57,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.MiddleName)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserStatus)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
@@ -91,9 +85,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.AnnualIncome)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
+       
         <td>
             @Html.ActionLink("Approve", "Approve", new { id = item.UserId }) |
             @Html.ActionLink("DisApprove", "DisApprove", new { id = item.UserId }) |

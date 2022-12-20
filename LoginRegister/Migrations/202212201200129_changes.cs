@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class adminpart : DbMigration
+    public partial class changes : DbMigration
     {
         public override void Up()
         {
@@ -13,7 +13,7 @@
                     {
                         AccountNumber = c.Int(nullable: false, identity: true),
                         UserId = c.Int(nullable: false),
-                        Balance = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Balance = c.String(),
                     })
                 .PrimaryKey(t => t.AccountNumber)
                 .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
@@ -26,6 +26,7 @@
                         UserId = c.Int(nullable: false, identity: true),
                         FirstName = c.String(nullable: false),
                         MiddleName = c.String(nullable: false),
+                        UserStatus = c.String(),
                         LastName = c.String(nullable: false),
                         FathersName = c.String(nullable: false),
                         MobileNumber = c.String(nullable: false, maxLength: 10),
@@ -44,8 +45,8 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        AdminId = c.Int(nullable: false),
-                        Password = c.String(),
+                        Email = c.String(nullable: false),
+                        Password = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

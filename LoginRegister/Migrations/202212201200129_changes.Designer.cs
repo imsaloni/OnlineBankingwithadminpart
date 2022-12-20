@@ -7,13 +7,13 @@ namespace LoginRegister.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class adminpart : IMigrationMetadata
+    public sealed partial class changes : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(adminpart));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(changes));
         
         string IMigrationMetadata.Id
         {
-            get { return "202212170406305_admin part"; }
+            get { return "202212201200129_changes"; }
         }
         
         string IMigrationMetadata.Source
