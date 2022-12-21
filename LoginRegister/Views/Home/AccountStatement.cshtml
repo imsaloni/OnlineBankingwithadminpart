@@ -1,0 +1,63 @@
+﻿@model LoginRegister.Models.Transaction
+
+@{
+    ViewBag.Title = "AccountStatement";
+}
+
+<h2>AccountStatement</h2>
+
+<div>
+    <h4>Transaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountDetails.AccountNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountDetails.AccountNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Users.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Users.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.payeeAccountNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.payeeAccountNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransationAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransationAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionDate)
+        </dd>
+
+    </dl>
+</div>
+

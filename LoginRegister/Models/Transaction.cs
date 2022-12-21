@@ -14,11 +14,11 @@ namespace LoginRegister.Models
         public int Id { get; set; }
 
       //  This is for foreign key refrence
-      //  [Display(Name = "UserId")]
-        //public virtual int UserId { get; set; }
+      [Display(Name = "UserId")]
+        public virtual int UserId { get; set; }
 
-    //    [ForeignKey("UserId")]
-      //  public virtual User User { get; set; }
+     [ForeignKey("UserId")]
+      public virtual User Users { get; set; }
 
 
         //Account no foregion key

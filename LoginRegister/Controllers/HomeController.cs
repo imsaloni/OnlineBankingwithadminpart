@@ -41,7 +41,11 @@ namespace LoginRegister.Controllers
 
         public ActionResult Dashboard()
         {
+            var UserId = (int)Session["UserId"];
+            var Users = _db.Users.Where(t => t.UserId == UserId).FirstOrDefault();
+
             return View();
+           
         }
 
         //GET: Register
@@ -151,14 +155,17 @@ namespace LoginRegister.Controllers
         public ActionResult AccountDetails()
         {
             var UserId = (int)Session["UserId"];
-            var Users = _db.Users.Where(t => t.UserId == UserId).FirstOrDefault();
-            return View(Users);
+            var AccountDetails = _db.AccountDetail.Where(t => t.UserId == UserId).FirstOrDefault();
+            return View(AccountDetails);
 
         }
         //Transaction
 
         public ActionResult Transaction()
         {
+            var UserId = (int)Session["UserId"];
+            var AccountDetails = _db.AccountDetail.Where(t => t.UserId == UserId).FirstOrDefault();
+           
 
             return View();
 
@@ -192,17 +199,6 @@ namespace LoginRegister.Controllers
             var Transmoney = check1.Balance + _transfer.TransationAmount;
             check1.Balance = Transmoney;
 
-
-            //_transfer.TransationAmount -= check.Balance;
-            //  check.Balance += _transfer.PayeeBalance;
-            //_transfer.PayeeBalance
-
-            /*var bal= 0;
-             var temp = check.Balance - _transfer.TransationAmount;
-             bal = temp;
-             temp =check.Balance;*/
-
-
             _db.Transaction.Add(_transfer);
             try
             {
@@ -217,6 +213,7 @@ namespace LoginRegister.Controllers
                     {
                         Response.Write("Property:" + validationError.PropertyName + "Error:" + validationError.ErrorMessage);
                     }
+                    return RedirectToAction("Dashboard");
                 }
             }
             return View();
@@ -292,40 +289,12 @@ namespace LoginRegister.Controllers
             var Users = _db.Users.Where(t => t.UserId == UserId).FirstOrDefault();
             return View(Users);
         }
-        [HttpGet]
-        public ActionResult Edit(int? id)
+        public ActionResult AccountStatement()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            var UserId = (int)Session["UserId"];
+            var Transaction = _db.Transaction.Where(t => t.UserId == UserId).FirstOrDefault();
+            return View(Transaction);
 
-
-
-            var user = _db.Users.SingleOrDefault(e => e.UserId == id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
-
-
-
-        [HttpPost]
-        public ActionResult Edit(User use)
-        {
-            if (ModelState.IsValid)
-            {
-                _db.Entry(User).State = EntityState.Modified;
-                _db.Users.Attach(use);
-                _db.SaveChanges();
-                return RedirectToAction("Index", "UserProfile");
-            }
-
-
-
-            return View();
         }
 
 

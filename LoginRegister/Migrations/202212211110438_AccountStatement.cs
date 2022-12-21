@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class changes : DbMigration
+    public partial class AccountStatement : DbMigration
     {
         public override void Up()
         {
@@ -55,6 +55,7 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        UserId = c.Int(nullable: false),
                         AccountNumber = c.Int(nullable: false),
                         payeeAccountNo = c.Int(nullable: false),
                         TransationAmount = c.Decimal(nullable: false, precision: 18, scale: 2),
@@ -62,16 +63,20 @@
                         TransactionDate = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AccountDetails", t => t.AccountNumber, cascadeDelete: true)
+                .ForeignKey("dbo.AccountDetails", t => t.AccountNumber, cascadeDelete: false)
+                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: false)
+                .Index(t => t.UserId)
                 .Index(t => t.AccountNumber);
             
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Transaction", "UserId", "dbo.Users");
             DropForeignKey("dbo.Transaction", "AccountNumber", "dbo.AccountDetails");
             DropForeignKey("dbo.AccountDetails", "UserId", "dbo.Users");
             DropIndex("dbo.Transaction", new[] { "AccountNumber" });
+            DropIndex("dbo.Transaction", new[] { "UserId" });
             DropIndex("dbo.AccountDetails", new[] { "UserId" });
             DropTable("dbo.Transaction");
             DropTable("dbo.Admin");
