@@ -228,6 +228,10 @@ namespace LoginRegister.Controllers
             }
             return View();
         }
+        public ActionResult Contact()
+        {
+            return View();
+        }
         
 
         public ActionResult UserProfile(User us)
