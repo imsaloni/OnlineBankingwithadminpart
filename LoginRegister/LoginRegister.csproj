@@ -145,9 +145,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202212201200129_changes.cs" />
-    <Compile Include="Migrations\202212201200129_changes.designer.cs">
-      <DependentUpon>202212201200129_changes.cs</DependentUpon>
+    <Compile Include="Migrations\202212210934311_changes.cs" />
+    <Compile Include="Migrations\202212210934311_changes.designer.cs">
+      <DependentUpon>202212210934311_changes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountDetails.cs" />
@@ -197,7 +197,6 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Home\Logout.cshtml" />
-    <Content Include="Views\Home\Transaction.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
@@ -208,6 +207,7 @@
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Home\AccountDetails.cshtml" />
     <Content Include="Views\Home\AdminLogin.cshtml" />
+    <Content Include="Views\Home\Transaction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -227,8 +227,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202212201200129_changes.resx">
-      <DependentUpon>202212201200129_changes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202212210934311_changes.resx">
+      <DependentUpon>202212210934311_changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

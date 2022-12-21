@@ -14,6 +14,7 @@ using System.Data.Entity;
 using System.Net;
 using System.Security.Principal;
 using System.Net.Mail;
+using System.Data.Entity.Validation;
 
 namespace LoginRegister.Controllers
 {
@@ -155,26 +156,74 @@ namespace LoginRegister.Controllers
 
         }
         //Transaction
-        [HttpGet]
+
         public ActionResult Transaction()
         {
-            return View();  
-        }
-       /* [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Transactions()
-        {
-            var accountDetails = _db.AccountDetails.ToList();
-           
-            var user1 = _db.AccountDetails.ToList();
-            AccountDetails user = _db.AccountDetails.Find();
-            var user2 = _db.AccountDetails.FindAsync();
-            user1.Balance -= Balance;
-            user2.Credit += Balance;
 
-            await db.SaveChangesAsync();
             return View();
-        }*/
+
+
+        }
+
+        [HttpPost]
+
+        public ActionResult Transaction(Transaction _transfer)
+        {
+            // var check = _db.Transaction.FirstOrDefault(s => s.TransationAmount == _transfer.AccBalance);
+
+            var check = _db.AccountDetail.Where(Accbal => Accbal.AccountNumber == _transfer.AccountNumber).FirstOrDefault();
+            var check1 = _db.AccountDetail.Where(Accbal => Accbal.AccountNumber == _transfer.payeeAccountNo).FirstOrDefault();
+            if (_transfer.TransationAmount <= 0)
+            {
+                // throw new ApplicationException("Transfer Balance must be positive");
+                ViewBag.error = "Balance is insuffient to make transaction";
+
+            }
+            else if (_transfer.TransationAmount == 0)
+            {
+                //throw new ApplicationException("Invalid Transfer Amount");
+                ViewBag.error = "Insufficient balance";
+            }
+            //
+
+
+            var TempData = check.Balance - _transfer.TransationAmount;
+            check.Balance = TempData;
+            var Transmoney = check1.Balance + _transfer.TransationAmount;
+            check1.Balance = Transmoney;
+
+
+            //_transfer.TransationAmount -= check.Balance;
+            //  check.Balance += _transfer.PayeeBalance;
+            //_transfer.PayeeBalance
+
+            /*var bal= 0;
+             var temp = check.Balance - _transfer.TransationAmount;
+             bal = temp;
+             temp =check.Balance;*/
+
+
+            _db.Transaction.Add(_transfer);
+            try
+            {
+
+                _db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in entityValidationErrors.ValidationErrors)
+                    {
+                        Response.Write("Property:" + validationError.PropertyName + "Error:" + validationError.ErrorMessage);
+                    }
+                }
+            }
+            return View();
+
+        }
+
+
 
 
         //Logout

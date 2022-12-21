@@ -19,8 +19,8 @@ namespace LoginRegister.Models
 
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
-        [DataType(DataType.Currency)]
-        public String Balance { get; set; }    
+        [Required]
+        public Decimal Balance { get; set; }    
 
     }
 }

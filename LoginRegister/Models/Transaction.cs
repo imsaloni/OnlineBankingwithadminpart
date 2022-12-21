@@ -9,11 +9,11 @@ namespace LoginRegister.Models
 {
     public class Transaction
     {
-        [Key, Column(Order = 1)]
+        [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public string TransationId { get; set; }
+        public int Id { get; set; }
 
-        //This is for foreign key refrence
+      //  This is for foreign key refrence
       //  [Display(Name = "UserId")]
         //public virtual int UserId { get; set; }
 
@@ -31,8 +31,8 @@ namespace LoginRegister.Models
         public int payeeAccountNo { get; set; }
 
         [Required]
-        [DataType(DataType.Currency)]
-        public string TransationAmount {get; set; }
+       
+        public Decimal TransationAmount {get; set; }
 
         public string TransactionType { get; set; }
 

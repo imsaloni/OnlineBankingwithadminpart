@@ -13,7 +13,7 @@ namespace LoginRegister.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202212201200129_changes"; }
+            get { return "202212210934311_changes"; }
         }
         
         string IMigrationMetadata.Source

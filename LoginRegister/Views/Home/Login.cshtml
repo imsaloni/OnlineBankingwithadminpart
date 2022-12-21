@@ -5,6 +5,8 @@
 }
 
 <h2>Login</h2>
+<!DOCTYPE html>
+<html lang="en">
 
 
 <div class="row justify-content-md-center">
@@ -39,10 +41,12 @@
     </div>
 </div>
 <form action="Register">
-    <input type="submit" name="Register" value="Register" />
+    <input type="submit" name="Register" value="Register For New User" />
 </form>
 </br>
+<h6 style="color:Blue;">are you Admin? Then Login Here  </h6>
 <li>@Html.ActionLink("AdminLogin", "AdminLogin", "")</li>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+</html>

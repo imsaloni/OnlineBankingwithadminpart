@@ -13,7 +13,7 @@
                     {
                         AccountNumber = c.Int(nullable: false, identity: true),
                         UserId = c.Int(nullable: false),
-                        Balance = c.String(),
+                        Balance = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.AccountNumber)
                 .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
@@ -54,14 +54,14 @@
                 "dbo.Transaction",
                 c => new
                     {
-                        TransationId = c.String(nullable: false, maxLength: 128),
+                        Id = c.Int(nullable: false, identity: true),
                         AccountNumber = c.Int(nullable: false),
                         payeeAccountNo = c.Int(nullable: false),
-                        TransationAmount = c.String(nullable: false),
+                        TransationAmount = c.Decimal(nullable: false, precision: 18, scale: 2),
                         TransactionType = c.String(),
                         TransactionDate = c.String(nullable: false),
                     })
-                .PrimaryKey(t => t.TransationId)
+                .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AccountDetails", t => t.AccountNumber, cascadeDelete: true)
                 .Index(t => t.AccountNumber);
             
